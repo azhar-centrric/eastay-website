@@ -43,7 +43,7 @@ function HostelDetails({ hostel }: { hostel: Hostel }) {
             </div>
           </dl>
 
-          <ul className="mt-6 grid grid-cols-4 gap-2 border-y border-line py-5">
+          <ul className="mt-6 grid grid-cols-3 gap-x-2 gap-y-5 border-y border-line py-5 sm:grid-cols-6">
             {hostel.facilities.map(({ label, icon: Icon }) => (
               <li key={label} className="flex flex-col items-center gap-2 text-center">
                 <Icon className="size-6 text-eastay" strokeWidth={1.5} aria-hidden />

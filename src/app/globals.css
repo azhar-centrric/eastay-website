@@ -88,8 +88,18 @@ body {
   background-repeat: repeat-x;
   background-size: auto 100%;
   background-position: left bottom;
-  -webkit-mask-image: linear-gradient(to right, transparent 40%, #000 66%);
-  mask-image: linear-gradient(to right, transparent 40%, #000 66%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 40%);
+}
+
+/* The enquiry "building" dissolves into the page at its outer edges so it reads as part of the scene. */
+.fade-edges {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 44px),
+    linear-gradient(to bottom, transparent 0, #000 16px);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 44px),
+    linear-gradient(to bottom, transparent 0, #000 16px);
+  mask-composite: intersect;
 }
 
 /* Keep the browser's autofill tint off the window glass. */

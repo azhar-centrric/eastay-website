@@ -1,7 +1,8 @@
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { HostelSection } from "@/components/hostel-section";
-import { EnquirySection } from "@/components/enquiry-section";
+import { FinalSection } from "@/components/final-section";
+import { MobileBar } from "@/components/mobile-bar";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -11,9 +12,10 @@ export default function Home() {
       <main id="main">
         <HeroSection />
         <HostelSection />
-        <EnquirySection />
+        <FinalSection />
       </main>
       <Footer />
+      <MobileBar />
     </>
   );
 }

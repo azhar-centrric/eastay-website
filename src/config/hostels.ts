@@ -1,4 +1,4 @@
-import { Snowflake, Sofa, WashingMachine, Wifi, type LucideIcon } from "lucide-react";
+import { CigaretteOff, Snowflake, Sofa, WashingMachine, Wifi, WineOff, type LucideIcon } from "lucide-react";
 
 /**
  * Single source of truth for hostel details: prices, occupancy, vacancy, photos and maps.
@@ -34,6 +34,8 @@ export const facilityCatalog = {
   laundry: { label: "Laundry", icon: WashingMachine },
   wifi: { label: "Wi-Fi", icon: Wifi },
   publicSpaces: { label: "Public spaces", icon: Sofa },
+  noSmoking: { label: "No smoking", icon: CigaretteOff },
+  noDrinking: { label: "No drinking", icon: WineOff },
 } satisfies Record<string, Facility>;
 
 export type Hostel = {
@@ -54,12 +56,12 @@ export const hostels: Hostel[] = [
     name: "Hostel 1",
     image: { src: "/images/room-1.png", alt: "Hostel 1 (placeholder photo)" },
     rooms: [
-      { sharing: 6, pricePerMonth: 5555 },
+      { sharing: 6, pricePerMonth: 4000 },
       { sharing: 4, pricePerMonth: 6666 },
     ],
     totalOccupancy: 14,
     vacancy: 4,
-    facilities: [facilityCatalog.ac, facilityCatalog.laundry, facilityCatalog.wifi, facilityCatalog.publicSpaces],
+    facilities: [facilityCatalog.ac, facilityCatalog.laundry, facilityCatalog.wifi, facilityCatalog.publicSpaces, facilityCatalog.noSmoking, facilityCatalog.noDrinking],
     map: { embedSrc: null, query: null, url: null }, // PLACEHOLDER: add Hostel 1 location
   },
   {
@@ -67,12 +69,12 @@ export const hostels: Hostel[] = [
     name: "Hostel 2",
     image: { src: "/images/room-2.png", alt: "Hostel 2 (placeholder photo)" },
     rooms: [
-      { sharing: 6, pricePerMonth: 5555 },
+      { sharing: 6, pricePerMonth: 4000 },
       { sharing: 4, pricePerMonth: 6666 },
     ],
     totalOccupancy: 65,
     vacancy: 65,
-    facilities: [facilityCatalog.ac, facilityCatalog.laundry, facilityCatalog.wifi, facilityCatalog.publicSpaces],
+    facilities: [facilityCatalog.ac, facilityCatalog.laundry, facilityCatalog.wifi, facilityCatalog.publicSpaces, facilityCatalog.noSmoking, facilityCatalog.noDrinking],
     map: { embedSrc: null, query: null, url: null }, // PLACEHOLDER: add Hostel 2 location
   },
 ];

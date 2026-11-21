@@ -14,18 +14,17 @@ export const siteConfig = {
     /** [before, emphasised, after] */
     headline: ["Comfortable AC rooms, ", "simply priced", "."] as const,
     /** {price} is replaced with the lowest monthly price from hostels.ts */
-    description: "Shared AC rooms from {price} a month across two hostels. See what’s available and get in touch.",
+    description: "Rooms from {price}/month.",
     image: { src: "/images/hero-building.jpg", width: 1141, height: 1378, alt: "Eastay hostel building on a tree-lined street, with architectural floor plans above" },
   },
 
   contact: {
-    // PLACEHOLDER values
-    phoneDisplay: "+91 00000 00000",
-    phoneHref: "tel:+910000000000",
+    phoneDisplay: "+91 8138841989",
+    phoneHref: "tel:+918138841989",
     /** Digits only, international format. Set NEXT_PUBLIC_WHATSAPP_NUMBER to override. */
-    whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "910000000000",
-    whatsappDisplay: "+91 00000 00000",
-    email: "hello@eastay.example",
+    whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "918138841989",
+    whatsappDisplay: "+91 8138841989",
+    email: "eastaygroup@gmail.com",
   },
 } as const;
 

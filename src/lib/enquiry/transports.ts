@@ -32,3 +32,35 @@ export function createHttpTransport(url: string): EnquiryTransport {
     },
   };
 }
+
+/**
+ * Emails each enquiry to the owner through Web3Forms (https://web3forms.com).
+ * The access key is public by design; restrict it to eastay.in in the Web3Forms dashboard.
+ */
+export function createWeb3FormsTransport(accessKey: string): EnquiryTransport {
+  return {
+    name: "web3forms",
+    async send(payload) {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Eastay enquiry from ${payload.fullName}`,
+          from_name: "Eastay Website",
+          "Full name": payload.fullName,
+          Phone: payload.phone,
+          Gender: payload.gender,
+          Status: payload.status,
+          "Preferred joining date": payload.preferredJoiningDate || "Not given",
+          Message: payload.message || "None",
+          "Submitted at": payload.submittedAt,
+        }),
+      });
+      const json = await res.json().catch(() => null);
+      if (!res.ok || !json?.success) {
+        throw new Error(`Web3Forms responded with ${res.status}: ${json?.message ?? "unknown error"}`);
+      }
+    },
+  };
+}

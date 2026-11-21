@@ -1,5 +1,5 @@
 import type { EnquiryFormValues } from "./schema";
-import { createHttpTransport, type EnquiryTransport } from "./transports";
+import { createHttpTransport, createWeb3FormsTransport, type EnquiryTransport } from "./transports";
 
 export type EnquiryPayload = EnquiryFormValues & {
   submittedAt: string;
@@ -15,6 +15,8 @@ export type SubmitResult =
  * Swap or extend this function when a backend is chosen.
  */
 function resolveTransport(): EnquiryTransport | null {
+  const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+  if (web3formsKey) return createWeb3FormsTransport(web3formsKey);
   const endpoint = process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT;
   if (endpoint) return createHttpTransport(endpoint);
   return null;

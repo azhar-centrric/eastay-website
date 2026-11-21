@@ -13,8 +13,8 @@ export const siteConfig = {
   hero: {
     /** [before, emphasised, after] */
     headline: ["Comfortable AC rooms, ", "simply priced", "."] as const,
-    /** {price} is replaced with the lowest monthly price from hostels.ts */
-    description: "Rooms from {price}/month.",
+    /** Shown as written. (A {price} token would be replaced with the lowest monthly price from hostels.ts.) */
+    description: "Our Rooms start from ₹4,000/month.",
     image: { src: "/images/hero-building.jpg", width: 1141, height: 1378, alt: "Eastay hostel building on a tree-lined street, with architectural floor plans above" },
   },
 

@@ -1,6 +1,7 @@
 import { formatRupees, hostels, visitMessage, type Hostel } from "@/config/hostels";
 import { Eyebrow } from "@/components/section-heading";
 import { Photo } from "@/components/photo";
+import { HostelGallery } from "@/components/hostel-gallery";
 import { HostelMap } from "@/components/hostel-map";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 
@@ -13,8 +14,14 @@ function HostelDetails({ hostel }: { hostel: Hostel }) {
       </h3>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-12">
-        <div className="relative aspect-[4/3] self-start overflow-hidden bg-sand lg:col-span-5">
-          <Photo src={hostel.image.src} alt={hostel.image.alt} sizes="(min-width: 1024px) 40vw, 100vw" />
+        <div className="self-start lg:col-span-5">
+          {hostel.gallery?.length ? (
+            <HostelGallery images={hostel.gallery} name={hostel.name} />
+          ) : (
+            <div className="relative aspect-[4/3] overflow-hidden bg-sand">
+              <Photo src={hostel.image.src} alt={hostel.image.alt} sizes="(min-width: 1024px) 40vw, 100vw" />
+            </div>
+          )}
         </div>
 
         <div className="lg:col-span-7">

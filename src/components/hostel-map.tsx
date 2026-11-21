@@ -42,7 +42,19 @@ export function HostelMap({ hostel }: { hostel: Hostel }) {
             }}
           >
             <MapPin className="size-6 text-eastay" strokeWidth={1.5} aria-hidden />
-            Map location coming soon
+            {hostel.map.url ? (
+              <a
+                href={hostel.map.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 border border-eastay px-4 py-2.5 font-medium text-eastay transition-colors hover:bg-eastay hover:text-white"
+              >
+                View {hostel.name} on Google Maps <ArrowUpRight className="size-4" aria-hidden />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            ) : (
+              "Map location coming soon"
+            )}
           </div>
         )}
       </div>

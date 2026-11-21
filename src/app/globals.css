@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-eastay: #038359;
+  --color-eastay-dark: #026b49;
+  --color-eastay-tint: #e6f2ec;
+  --color-cream: #faf6ee;
+  --color-hero: #f0e7de;
+  --color-concrete: #d9d2c5;
+  --color-steel: #2b2e2c;
+  --color-glass: #dde4e2;
+  --color-lamp: #ffe2a3;
+  --color-sand: #f0e9da;
+  --color-paper: #fffdf8;
+  --color-ink: #1e2622;
+  --color-muted: #5a645e;
+  --color-line: #e0d8c7;
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
+}
+
+@theme {
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-eastay);
+  color: #fff;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-eastay);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Softly fades the top, left and right edges of an image into the page background. */
+.fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 14%);
+  mask-composite: intersect;
+}
+
+/* Pavement strip that continues the hero photo's walkway to the screen edge. */
+.street {
+  background-image: url(/images/hero-street.jpg);
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: left bottom;
+  -webkit-mask-image: linear-gradient(to right, transparent 40%, #000 66%);
+  mask-image: linear-gradient(to right, transparent 40%, #000 66%);
+}
+
+/* Keep the browser's autofill tint off the window glass. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-ink);
+  caret-color: var(--color-ink);
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
